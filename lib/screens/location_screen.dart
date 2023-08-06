@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:clima/utilities/constants.dart';
 
 class LocationScreen extends StatefulWidget {
+  LocationScreen({required this.locationWeatherData});
+
+  final locationWeatherData;
+
   @override
   _LocationScreenState createState() => _LocationScreenState();
 }
@@ -28,14 +32,14 @@ class _LocationScreenState extends State<LocationScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  FlatButton(
+                  TextButton(
                     onPressed: () {},
                     child: Icon(
                       Icons.near_me,
                       size: 50.0,
                     ),
                   ),
-                  FlatButton(
+                  TextButton(
                     onPressed: () {},
                     child: Icon(
                       Icons.location_city,
@@ -74,3 +78,8 @@ class _LocationScreenState extends State<LocationScreen> {
     );
   }
 }
+
+//
+// double temp = decodedData['main']['temp'];
+// int condition = decodedData['weather'][0]['id'];
+// String cityName = decodedData['name'];
