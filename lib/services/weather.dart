@@ -5,13 +5,20 @@ const kApiKey = '0d09243ddd2d06fcdcd204fed5194872';
 const kOpenWeatherMapURL = 'https://api.openweathermap.org/data/2.5/weather';
 
 class WeatherModel {
+  Future<dynamic> getCityWeather(String cityName) async {
+    NetworkHelper networkHelper = NetworkHelper(
+        '$kOpenWeatherMapURL?q=$cityName&appid=$kApiKey&units=metric');
+    var weatherData = await networkHelper.getData();
+
+    return weatherData;
+  }
+
   Future<dynamic> getLocationWeather() async {
     Location location = Location();
     await location.getCurrentLocation();
     NetworkHelper networkHelper =
         NetworkHelper('$kOpenWeatherMapURL?lat=${location.latitude}'
             '&lon=${location.longitude}&appid=$kApiKey&units=metric');
-
     var weatherData = await networkHelper.getData();
 
     return weatherData;
